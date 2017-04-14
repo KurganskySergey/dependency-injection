@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2015",
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "experimentalDecorators": true,
+    "types": [
+      "node"
+    ],
+    "typeRoots" : ["node_modules/@types"]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

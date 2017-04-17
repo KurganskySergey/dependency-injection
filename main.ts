@@ -6,3 +6,4 @@ import Dashboard from './views/Dashboard';
 let myDashboard = new Dashboard();
 
 myDashboard.testResult();
+myDashboard.testResult2();

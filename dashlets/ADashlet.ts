@@ -1,20 +1,22 @@
-import { BaseDashlet, IBaseDashlet } from '../base/base-dashlet';
-import { Component } from '../di';
+import { Autowire } from '../di';
+import { IBaseDashlet } from "../base/base-dashlet";
+import { ADashlet } from '../dashlets/ADashlet';
 
-@Component
-export class ADashlet extends BaseDashlet implements IBaseDashlet {
-    public selector: string;
+export default class Dashboard {
 
-    constructor(settings: { name: string; }) {
-        super();
-        this.selector = settings.name;
+    @Autowire('ADashlet', { name: 'CoolDashlet' })
+    protected coolDashlet: IBaseDashlet;
+
+    @Autowire('ADashlet', { name: 'ABC-Dashlet' })
+    protected aDashlet: ADashlet;
+
+    public async testResult(): Promise<void> {
+        const txt = await this.coolDashlet.getText('some selector');
+        console.log(txt);
     }
 
-    public async getName() {
-        return this.getText(this.selector);
-    }
-
-    public async getLabel() {
-        return this.getText(this.selector);
+    public async testResult2(): Promise<void> {
+        const txt = await this.aDashlet.getLabel();
+        console.log(txt);
     }
 }
